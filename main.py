@@ -1,5 +1,4 @@
 import boto3
-from pprint import pprint
 from modules import Instance, from_raw_data_to_instance
 from typing import List
 import logging.config

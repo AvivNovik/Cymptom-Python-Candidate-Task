@@ -67,6 +67,8 @@ def from_raw_data_to_instance(raw_data: dict) -> Instance:
 
 @dataclass()
 class NetworkInterface:
+    # The class contains all useful information on an a network interface used in aws instance.
+
     ip_owner_id: str
     public_dns_name: str
     mac_address: str                          # mac address of the interface. (type could be changed into mac_address but require installing a package.)
@@ -98,6 +100,7 @@ def from_raw_data_to_network_interface(raw_data: dict) -> NetworkInterface:
                                         private_dns_name=raw_data["PrivateDnsName"],
                                         subnet_id=raw_data["SubnetId"], status=raw_data["Status"]
                                         )
+
     # check the input dictionary for optional fields, check if the input is vlad ip address and parse it into the object
     ipv6_address = raw_data["Ipv6Addresses"]
     public_ip = ip_address(association["PublicIp"])
