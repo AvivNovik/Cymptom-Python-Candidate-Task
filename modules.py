@@ -103,7 +103,7 @@ def from_raw_data_to_network_interface(raw_data: dict) -> NetworkInterface:
 
     # check the input dictionary for optional fields, check if the input is vlad ip address and parse it into the object
     ipv6_address = raw_data["Ipv6Addresses"]
-    public_ip = ip_address(association["PublicIp"])
+    public_ip = association["PublicIp"]
     private_ip_address = raw_data["PrivateIpAddress"]
     if ipv6_address:
         try:

@@ -45,9 +45,9 @@ def get_all_aws_instances(specific_regions=None) -> List[Instance]:
     logging.info("started pulling instances")
     for region in regions:
 
-        ec2 = boto3.client('ec2', region_name=region)
+        client = boto3.client('ec2', region_name=region)
         try:
-            regions_instances = describe_instances_paginated(ec2)
+            regions_instances = describe_instances_paginated(client)
             all_aws_instances.extend(regions_instances)
             logging.debug(f"pulled instances from region {region}")
         except Exception:
@@ -76,5 +76,7 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG)
 
     active_regions = ["us-east-2", "us-west-2"]
+
+    # Run is configured to go over active_regions here. to go over all regions, call the function without any arguments.
     all_aws_instances = get_all_aws_instances(specific_regions=active_regions)
 
